@@ -1,0 +1,14 @@
+<?php
+    // connection with mySQl
+    $host = "localhost";
+    $user = "root";
+    $pass = "";
+    $db = "pwad73";
+
+    $conn = mysqli_connect($host, $user, $pass, $db);
+    //$conn = new mysqli($host, $user, $pass, $db);
+
+    if(!$conn){
+        die("Database connection failed" . mysqli_connect_errno());
+    }
+?>
