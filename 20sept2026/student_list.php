@@ -11,7 +11,7 @@
 <body>
     <?php
        
-$data =$conn->query("SELECT * FROM student");
+$data = $conn->query("SELECT * FROM student");
 while($row = $data->fetch_object()){
     echo $row->name . "<br>";
     echo $row->email . "<br>";
