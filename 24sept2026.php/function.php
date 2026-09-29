@@ -13,9 +13,9 @@
     //  $y = trim($y);
     // echo $x . $y;
     $x = "Hello lovely World!";
-// $y = explode("o", $x);
-// echo "<pre>";
-// print_r($y);
-echo substr( $x, 6, 7);
+$y = explode("o", $x);
+echo "<pre>";
+print_r($y);
+// echo substr( $x, 6, 7);
 
 ?>
