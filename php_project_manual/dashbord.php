@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['email'])) {
+    header("Location: index.php");
+    exit;
+}
+?>
+
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
   <head>

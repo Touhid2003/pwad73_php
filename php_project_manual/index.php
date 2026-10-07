@@ -1,7 +1,4 @@
-<?php
 
-    include_once('dbconfig.php');
-?>
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 
@@ -29,24 +26,7 @@
 
 
   <!--authentication-->
-  <?php
-  if(isset($_POST['submit'])){
-    $email = $_POST['email'];
-    $pass = $_POST['password'];
-
-    $sql =  "SELECT * FROM login WHERE email = '$email' and password = '$pass'";
-    
-    $result = mysqli_query( $conn, $sql);
-    if(mysqli_num_rows($result)=== 1){
-      header("Location:dashbord.php");
-      exit;
-    }else {
-        echo("Invalid Email or Password");
-    }
-  }
-  ?>
-
-   
+  
 
   <div class="mx-3 mx-lg-0">
 
@@ -72,8 +52,32 @@
           <div class="separator">
             <div class="line"></div>
             <p class="mb-0 fw-bold">OR</p>
-            <div class="line"></div>
+            <div class="line"></div> 
+
+
           </div>
+          <?php
+          session_start();
+    if (isset($_POST['submit'])) {
+
+                        extract($_POST);
+                        $password =$password;
+                        include_once('dbconfig.php');
+                        $result = $conn->query("SELECT * FROM login WHERE email='$email' AND password='$password'");
+ 
+
+                        if ($result->num_rows === 1) {
+                            $_SESSION['email'] = $email;
+                            $_SESSION['password'] = $password;
+                           
+                            header("Location: dashbord.php");
+                            exit;
+                        } else {
+                            echo "<div class='alert'>Invalid email or password.</div>";
+                        }
+                    }
+
+  ?>
           <div class="form-body mt-4">
             <form class="row g-3" method="post" action="">
               <div class="col-12">
